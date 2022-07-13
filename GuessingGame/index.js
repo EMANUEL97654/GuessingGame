@@ -1,5 +1,6 @@
 const answer = Math.floor(Math.random() * 10 + 1);
 let guesses = 0;
+let tries = 0;
 
 document.getElementById("submitButton").onclick = function(){
     let guess = document.getElementById("guessField").value;
@@ -10,8 +11,14 @@ document.getElementById("submitButton").onclick = function(){
     }
     else if(guess < answer){
         alert("Too small");
+        tries++;
     }else{
         alert("Too large!");
+        tries++;
+    }
+    if(tries == 3){
+        document.getElementById("guessField").disabled = true;
+        alert("Has perdido :(");
     }
 
 }
